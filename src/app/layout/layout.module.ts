@@ -4,12 +4,14 @@ import {LayoutComponent} from './layout.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
+import {MaterialModule} from '../shared-module/material/material.module';
 
 @NgModule({
   declarations: [LayoutComponent, SidenavComponent, ToolbarComponent, MenuComponent],
   exports: [LayoutComponent, SidenavComponent, ToolbarComponent, MenuComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class LayoutModule { }

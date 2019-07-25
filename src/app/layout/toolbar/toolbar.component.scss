@@ -1,0 +1,12 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+.toolbar-logo {
+  text-decoration: none;
+  color: darken(white, 5%);
+}
+
+.icons {
+padding-right: 5px;
+  color: darken(white, 5%);
+}
