@@ -5,13 +5,15 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import {MaterialModule} from '../shared-module/material/material.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [LayoutComponent, SidenavComponent, ToolbarComponent, MenuComponent],
   exports: [LayoutComponent, SidenavComponent, ToolbarComponent, MenuComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ]
 })
 export class LayoutModule { }
