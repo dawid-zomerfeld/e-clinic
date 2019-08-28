@@ -1,5 +1,5 @@
 <div class="data-container">
-  <form>
+  <form [formGroup]="registerForm">
     <div class="form-group">
       <div >
         <label>Email</label>
@@ -23,19 +23,19 @@
       </div>
       <div >
         <label>Adres</label>
-        <input formControlName="adress" type="text" class="form-control" placeholder="adress">
+        <input formControlName="address" type="text" class="form-control" placeholder="adress">
       </div>
       <div >
         <label>Kod pocztowy</label>
-        <input formControlName="email" type="text" class="form-control" placeholder="post-code">
+        <input formControlName="postcode" type="text" class="form-control" placeholder="post-code">
       </div>
       <div >
         <label>Miasto</label>
-        <input formControlName="password" type="text" class="form-control" placeholder="town">
+        <input formControlName="town" type="text" class="form-control" placeholder="town">
       </div>
       <div >
         <label>Telefon</label>
-        <input formControlName="firstName" type="text" class="form-control" placeholder="telephone">
+        <input formControlName="telephone" type="text" class="form-control" placeholder="telephone">
       </div>
     </div>
 
@@ -47,6 +47,6 @@
 
   </form>
 
-<!--  <pre> {{carForm.value | json}}</pre> -->
+    <pre> {{registerForm.value | json}}</pre>
 
 </div>

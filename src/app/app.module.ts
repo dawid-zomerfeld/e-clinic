@@ -8,6 +8,7 @@ import {LayoutModule} from './layout/layout.module';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {RouterModule} from '@angular/router';
     SharedModule,
     LayoutModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
