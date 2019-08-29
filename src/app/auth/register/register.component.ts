@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,15 +20,15 @@ export class RegisterComponent implements OnInit {
 
   buildRegisterForm() {
     return this.formBuilder.group({
-      email: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      pesel: '',
-      address: '',
-      postcode: '',
-      town: '',
-      telephone: ''
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(20)])],
+      firstName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
+      lastName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
+      pesel: ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],
+      address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
+      postcode: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(6)])],
+      town: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(20)])],
+      telephone: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(12)])]
     });
   }
 

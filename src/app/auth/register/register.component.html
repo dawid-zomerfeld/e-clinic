@@ -4,49 +4,77 @@
       <div >
         <label>Email</label>
         <input formControlName="email" type="text" class="form-control" placeholder="email">
+        <p *ngIf="!registerForm.get('email').valid && registerForm.get('email').dirty" class="error">
+          This field is required and you must provide valid email address
+        </p>
       </div>
       <div >
         <label>Hasło</label>
         <input formControlName="password" type="text" class="form-control" placeholder="password">
+        <p *ngIf="!registerForm.get('password').valid && registerForm.get('password').dirty" class="error">
+          This field is required and must contain 6-20 characters
+        </p>
       </div>
       <div >
         <label>Imie</label>
         <input formControlName="firstName" type="text" class="form-control" placeholder="name">
+        <p *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').dirty" class="error">
+          This field is required and must contain 2-20 characters
+        </p>
       </div>
       <div >
         <label>Nazwisko</label>
         <input formControlName="lastName" type="text" class="form-control" placeholder="surname">
+        <p *ngIf="!registerForm.get('lastName').valid && registerForm.get('lastName').dirty" class="error">
+          This field is required and must contain 2-20 characters
+        </p>
       </div>
       <div >
         <label>Pesel</label>
         <input formControlName="pesel" type="text" class="form-control" placeholder="pesel">
+        <p *ngIf="!registerForm.get('pesel').valid && registerForm.get('pesel').dirty" class="error">
+          This field is required and must contain 11 characters
+        </p>
       </div>
       <div >
         <label>Adres</label>
         <input formControlName="address" type="text" class="form-control" placeholder="adress">
+        <p *ngIf="!registerForm.get('address').valid && registerForm.get('address').dirty" class="error">
+          This field is required and must contain 2-20 characters
+        </p>
       </div>
       <div >
         <label>Kod pocztowy</label>
         <input formControlName="postcode" type="text" class="form-control" placeholder="post-code">
+        <p *ngIf="!registerForm.get('postcode').valid && registerForm.get('postcode').dirty" class="error">
+          This field is required and must contain 6 characters
+        </p>
       </div>
       <div >
         <label>Miasto</label>
         <input formControlName="town" type="text" class="form-control" placeholder="town">
+        <p *ngIf="!registerForm.get('town').valid && registerForm.get('town').dirty" class="error">
+          This field is required and must contain 6-20 characters
+        </p>
       </div>
       <div >
         <label>Telefon</label>
         <input formControlName="telephone" type="text" class="form-control" placeholder="telephone">
+        <p *ngIf="!registerForm.get('telephone').valid && registerForm.get('telephone').dirty" class="error">
+          This field is required and must contain 8-12 characters
+        </p>
       </div>
     </div>
 
     <div class="row top">
       <div class="col-sm-12">
-        <button type="submit" class="btn btn text-white ">Zarejestruj</button>
+        <button [disabled]="registerForm.invalid" type="submit" class="btn btn text-white ">Zarejestruj</button>
       </div>
     </div>
 
   </form>
 
-    <pre> {{registerForm.value | json}}</pre>
+ <!--   <pre> {{registerForm.value | json}}</pre> -->
+
 
 </div>
