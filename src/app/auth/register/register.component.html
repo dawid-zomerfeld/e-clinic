@@ -54,7 +54,7 @@
         <label>Miasto</label>
         <input formControlName="town" type="text" class="form-control" placeholder="town">
         <p *ngIf="!registerForm.get('town').valid && registerForm.get('town').dirty" class="error">
-          This field is required and must contain 6-20 characters
+          This field is required and must contain 2-20 characters
         </p>
       </div>
       <div >
@@ -68,13 +68,13 @@
 
     <div class="row top">
       <div class="col-sm-12">
-        <button [disabled]="registerForm.invalid" type="submit" class="btn btn text-white ">Zarejestruj</button>
+        <button [disabled]="registerForm.invalid" (click)="register()" type="submit" class="btn btn text-white ">Zarejestruj</button>
       </div>
     </div>
 
   </form>
 
- <!--   <pre> {{registerForm.value | json}}</pre> -->
+  <pre> {{registerForm.value | json}}</pre>
 
 
 </div>

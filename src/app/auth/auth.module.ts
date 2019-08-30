@@ -6,10 +6,14 @@ import {AuthRoutingModule} from './auth-routing.module';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../shared-module/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from '../shared-module/services/auth.service';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   exports: [LoginComponent, RegisterComponent],
+  providers: [
+    AuthService
+  ],
   imports: [
     CommonModule,
     AuthRoutingModule,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../shared-module/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +13,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+  ) {
+  }
 
   ngOnInit() {
     this.registerForm = this.buildRegisterForm();
@@ -27,8 +32,19 @@ export class RegisterComponent implements OnInit {
       pesel: ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
       postcode: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(6)])],
-      town: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(20)])],
+      town: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
       telephone: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(12)])]
+    });
+  }
+
+  register() {
+    this.authService.register(this.registerForm.value).subscribe(result => {
+      if (result.status === 201) {
+        console.log('OK');
+        this.router.navigate(['/login']);
+      } else {
+        console.log('BAD');
+      }
     });
   }
 
