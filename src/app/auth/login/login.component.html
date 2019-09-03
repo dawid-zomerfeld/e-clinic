@@ -1,24 +1,24 @@
 <div class="data-container">
-  <form>
+  <form [formGroup]="loginForm" >
 
     <div class="form-group">
       <div >
         <label>Email</label>
-        <input type="text" class="form-control" placeholder="email">
+        <input formControlName="email" type="text" class="form-control" placeholder="email">
       </div>
       <div >
         <label>Hasło</label>
-        <input  type="text" class="form-control" placeholder="password">
+        <input formControlName="password" type="text" class="form-control" placeholder="password">
       </div>
     </div>
 
     <div class="row top">
       <div class="col-sm-12">
-        <button type="submit" class="btn btn text-white ">Zaloguj</button>
+        <button (click)="login()" [disabled]="loginForm.invalid" type="submit" class="btn btn text-white ">Zaloguj</button>
       </div>
     </div>
   </form>
 
-  <!--  <pre> {{carForm.value | json}}</pre> -->
+    <pre> {{loginForm.value | json}}</pre>
 
 </div>

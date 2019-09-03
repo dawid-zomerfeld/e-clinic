@@ -8,12 +8,14 @@ import {MaterialModule} from '../shared-module/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from '../shared-module/services/auth.service';
 
+
+
+
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   exports: [LoginComponent, RegisterComponent],
   providers: [
-    AuthService
-  ],
+    AuthService,],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -23,4 +25,5 @@ import {AuthService} from '../shared-module/services/auth.service';
     FormsModule
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}
