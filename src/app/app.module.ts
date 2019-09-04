@@ -8,19 +8,26 @@ import {LayoutModule} from './layout/layout.module';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {PatientModule} from './patient/patient.module';
+import {DoctorModule} from './doctor/doctor.module';
+import {RecepcionistModule} from './recepcionist/recepcionist.module';
+import {ManagerModule} from './manager/manager.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     AuthModule,
+    PatientModule,
+    DoctorModule,
+    RecepcionistModule,
+    ManagerModule,
     SharedModule,
     LayoutModule,
     AppRoutingModule,

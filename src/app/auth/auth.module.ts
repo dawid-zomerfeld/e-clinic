@@ -15,7 +15,7 @@ import {AuthService} from '../shared-module/services/auth.service';
   declarations: [LoginComponent, RegisterComponent],
   exports: [LoginComponent, RegisterComponent],
   providers: [
-    AuthService,],
+    AuthService],
   imports: [
     CommonModule,
     AuthRoutingModule,

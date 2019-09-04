@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  logIn = false;
+  logIn = true;
 
   constructor() { }
 
