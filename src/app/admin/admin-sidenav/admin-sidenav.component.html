@@ -1,0 +1,31 @@
+
+<div class="logo">
+    <img src="../../../assets/images/avatar.png">
+    <p>Witaj w panelu Kierownika!</p>
+  </div>
+
+  <ul class="sidenav__list">
+    <mat-divider></mat-divider>
+    <li [routerLink]="['/admin/dashboard']" [routerLinkActive]="'active'">
+      <a>
+        <i class="fa fa-user"></i> Przeglądaj pracowników
+      </a>
+    </li>
+    <li [routerLink]="['/admin/add']" [routerLinkActive]="'active'">
+      <a>
+        <i class="fa fa-plus"></i> Zatrudnij pracownika
+      </a>
+    </li>
+    <li [routerLink]="['/admin/delete']" [routerLinkActive]="'active'">
+      <a>
+        <i class="fa fa-minus"></i> Zwolnij pracownika
+      </a>
+    </li>
+    <mat-divider></mat-divider>
+    <li [routerLink]="['/admin/settings']" [routerLinkActive]="'active'">
+      <a>
+        <i class="fa fa-cog"></i> Moje konto
+      </a>
+    </li>
+  </ul>
+
