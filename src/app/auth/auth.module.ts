@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../shared-module/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from '../shared-module/services/auth.service';
+import {UsersService} from '../shared-module/services/users.service';
 
 
 
@@ -15,7 +16,8 @@ import {AuthService} from '../shared-module/services/auth.service';
   declarations: [LoginComponent, RegisterComponent],
   exports: [LoginComponent, RegisterComponent],
   providers: [
-    AuthService],
+    AuthService,
+    UsersService],
   imports: [
     CommonModule,
     AuthRoutingModule,

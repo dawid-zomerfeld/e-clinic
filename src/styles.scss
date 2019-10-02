@@ -1,0 +1,30 @@
+//@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~@angular/material/theming';
+
+
+@include mat-core();
+
+$primary: mat-palette($mat-cyan, 800);
+$accent:  mat-palette($mat-blue-grey, 600);
+$warn:    mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+
+@include angular-material-theme($theme);
+
+
+
+
+
+
+$primaryColor: #00838e;
+$primaryLightColor: #4fb3be;
+$primaryDarkColor: #005661;
+$secondaryColor: #757575;
+$secondaryLightColor: #819ca9;
+$secondaryDarkColor: #29434e;
+$primaryTextColor: #ffffff;
+$secondaryTextColor: #ffffff;
+
+

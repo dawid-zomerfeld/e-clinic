@@ -13,6 +13,9 @@ import {PatientModule} from './patient/patient.module';
 import {DoctorModule} from './doctor/doctor.module';
 import {RecepcionistModule} from './recepcionist/recepcionist.module';
 import {ManagerModule} from './manager/manager.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AdminModule} from './admin/admin.module';
+
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import {ManagerModule} from './manager/manager.module';
     LayoutModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

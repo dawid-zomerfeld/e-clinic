@@ -2,13 +2,11 @@
   <form [formGroup]="loginForm" >
 
     <div class="form-group">
-      <div >
-        <label>Email</label>
-        <input formControlName="email" type="text" class="form-control" placeholder="email">
+      <div>
+          <input formControlName="email" type="text" class="form-control" placeholder="Email">
       </div>
       <div >
-        <label>Hasło</label>
-        <input formControlName="password" type="text" class="form-control" placeholder="password">
+          <input formControlName="password" type="password" class="form-control" placeholder="Hasło">
       </div>
     </div>
 
@@ -18,7 +16,4 @@
       </div>
     </div>
   </form>
-
-    <pre> {{loginForm.value | json}}</pre>
-
 </div>

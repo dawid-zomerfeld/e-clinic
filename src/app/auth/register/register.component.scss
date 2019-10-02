@@ -1,8 +1,20 @@
 .data-container {
   padding: 15px;
   margin: 15px;
-  margin-left: 500px;
-  margin-right: 500px;
+}
+.form-group {
+  padding-top: 20px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 27px;
+}
+
+.form-group input {
+  margin-bottom: 10px;
+  border-radius: 27px;
+  height: 50px;
+
 }
 
 .top button {
@@ -10,6 +22,11 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  border: none;
+  width: 30%;
+  height: 50px;
+  border-radius: 25px;
 }
 
 

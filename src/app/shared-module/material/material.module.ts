@@ -8,7 +8,9 @@ import {
   MatInputModule, MatSelectModule,
   MatSnackBarModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatTabsModule,
+  MatListModule, MatButtonToggleModule
 } from '@angular/material';
 
 const MATERIAL_MODULES = [
@@ -22,7 +24,10 @@ const MATERIAL_MODULES = [
   MatCheckboxModule,
   MatSelectModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatTabsModule,
+  MatListModule,
+  MatButtonToggleModule
 ];
 @NgModule({
   declarations: [],

@@ -1,12 +1,19 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
 
 .toolbar-logo {
   text-decoration: none;
   color: darken(white, 5%);
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+
 }
 
 .icons {
 padding-right: 5px;
   color: darken(white, 5%);
 }
+
+button {
+  font-size: 20px;
+}
+
