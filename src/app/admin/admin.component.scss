@@ -1,7 +1,9 @@
-.example-container {
-  height: 850px;
-}
+
 .example-sidenav {
   width: 300px;
   background-color: #f2f2f2;
+}
+
+mat-drawer-content {
+  min-height: 700px !important;
 }

@@ -1,6 +1,73 @@
 <div class="example-sidenav-content">
   <mat-tab-group mat-stretch-tabs class="example-stretched-tabs ">
-    <mat-tab label="Doktorzy"> Content 1 </mat-tab>
-    <mat-tab label="Recepcjoniści"> Content 2 </mat-tab>
+
+    <mat-tab label="Doktorzy">
+      <mat-table [dataSource]="dataSourceDoctor" class="mat-elevation-z8">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef> Imię </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        </ng-container>
+
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef> Nazwisko </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
+
+        <!-- Specjalization Column -->
+        <ng-container matColumnDef="specialization">
+          <mat-header-cell *matHeaderCellDef> Specjalizacja </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.specialization}} </mat-cell>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsDoctor"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsDoctor;"></mat-row>
+      </mat-table>
+    </mat-tab>
+
+    <mat-tab label="Recepcjoniści">
+      <mat-table [dataSource]="dataSourceRecepcionist" class="mat-elevation-z8">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef> Imię </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        </ng-container>
+
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef> Nazwisko </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsRecepcionist"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsRecepcionist;"></mat-row>
+      </mat-table>
+
+    </mat-tab>
   </mat-tab-group>
 </div>
