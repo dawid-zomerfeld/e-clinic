@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 import {AdminAddComponent} from './admin-add/admin-add.component';
 import {AdminDeleteComponent} from './admin-delete/admin-delete.component';
 import {AdminSettingsComponent} from './admin-settings/admin-settings.component';
+import {AdminEmployeeComponent} from './admin-employee/admin-employee.component';
 
 const routes = [
-  {path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'employee', pathMatch: 'full'},
   {
-    path: 'admin/dashboard',
-    component: AdminDashboardComponent
+    path: 'employee',
+    component: AdminEmployeeComponent
   },
   {
-    path: 'admin/add',
+    path: 'add',
     component: AdminAddComponent
   },
   {
-    path: 'admin/delete',
+    path: 'delete',
     component: AdminDeleteComponent
   },
   {
-    path: 'admin/settings',
+    path: 'settings',
     component: AdminSettingsComponent
   }
 ];
