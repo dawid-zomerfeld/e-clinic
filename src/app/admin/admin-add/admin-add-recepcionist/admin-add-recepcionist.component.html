@@ -1,0 +1,30 @@
+<div class="forms" >
+  <img src="../../../assets/images/avatar.png">
+  <form [formGroup]="recepcionistForm" >
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Imię" formControlName="firstName">
+      <mat-error *ngIf="!recepcionistForm.get('firstName').valid && recepcionistForm.get('firstName').dirty">
+        Imie jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nazwisko" formControlName="lastName">
+      <mat-error *ngIf="!recepcionistForm.get('lastName').valid && recepcionistForm.get('lastName').dirty">
+      Nazwisko jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="!recepcionistForm.get('email').valid && recepcionistForm.get('email').dirty">
+        Email jest <strong>wymagany</strong> i musisz podać <strong>prawdziwy</strong> adres email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Hasło" formControlName="password">
+      <mat-error *ngIf="!recepcionistForm.get('password').valid && recepcionistForm.get('password').dirty">
+        Hasło jest <strong>wymagane</strong> i musi zawierać od <strong>6 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button [disabled]="recepcionistForm.invalid" (click)="addRecepcionist()"  color="primary" type="submit" >Dodaj pracownika</button>
+</div>

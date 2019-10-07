@@ -1,0 +1,36 @@
+<div class="forms" >
+  <img src="../../../assets/images/avatar.png">
+  <form [formGroup]="doctorForm" >
+    <mat-form-field class="example-full-width ">
+      <input matInput placeholder="Imię" formControlName="firstName">
+      <mat-error *ngIf="!doctorForm.get('firstName').valid && doctorForm.get('firstName').dirty">
+        Imie jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width ">
+      <input matInput placeholder="Nazwisko" formControlName="lastName">
+      <mat-error *ngIf="!doctorForm.get('lastName').valid && doctorForm.get('lastName').dirty">
+        Nazwisko jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="!doctorForm.get('email').valid && doctorForm.get('email').dirty">
+        Email jest <strong>wymagany</strong> i musisz podać <strong>prawdziwy</strong> adres email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Hasło" formControlName="password">
+      <mat-error *ngIf="!doctorForm.get('password').valid && doctorForm.get('password').dirty">
+        Hasło jest <strong>wymagane</strong> i musi zawierać od <strong>6 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Specializacja" formControlName="specialization">
+      <mat-error *ngIf="!doctorForm.get('specialization').dirty">
+        Specjalizacja jest <strong>wymagana</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button [disabled]="doctorForm.invalid" (click)="addDoctor()"  color="primary" type="submit" >Dodaj pracownika</button>
+</div>
