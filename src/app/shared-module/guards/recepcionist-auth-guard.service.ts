@@ -13,7 +13,7 @@ export class RecepcionistAuthGuard implements CanActivate {
     if (isRecepcionist) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
       return false;
     }
   }

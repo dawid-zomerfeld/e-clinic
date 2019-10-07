@@ -13,7 +13,7 @@ export class DoctorAuthGuard implements CanActivate {
     if (isDoctor) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
       return false;
     }
   }

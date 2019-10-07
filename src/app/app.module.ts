@@ -12,7 +12,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {PatientModule} from './patient/patient.module';
 import {DoctorModule} from './doctor/doctor.module';
 import {RecepcionistModule} from './recepcionist/recepcionist.module';
-import {ManagerModule} from './manager/manager.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AdminModule} from './admin/admin.module';
 
@@ -30,7 +29,6 @@ import {AdminModule} from './admin/admin.module';
     PatientModule,
     DoctorModule,
     RecepcionistModule,
-    ManagerModule,
     SharedModule,
     LayoutModule,
     AppRoutingModule,

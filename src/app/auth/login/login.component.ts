@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../shared-module/services/users.service';
 import {isRequestSuccess} from '../../shared-module/http/request-status';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,9 +18,9 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  private redirectUrlAdminSuccess = 'doctor';
-  private redirectUrlUserSuccess = 'patient';
-  private redirectUrlManagerSuccess = 'manager';
+  private redirectUrlDoctorSuccess = 'doctor';
+  private redirectUrlPatientSuccess = 'patient';
+  private redirectUrlAdminSuccess = 'admin';
   private redirectUrlRecepcionistSuccess = 'recepcionist';
 
   constructor(
@@ -60,11 +61,11 @@ export class LoginComponent implements OnInit {
   private redirectIfLogged() {
     if (this.usersService.isLogged()) {
       if (this.usersService.isDoctorUser()) {
-        this.router.navigate([this.redirectUrlAdminSuccess]);
+        this.router.navigate([this.redirectUrlDoctorSuccess]);
       } else if (this.usersService.isPatientUser()) {
-        this.router.navigate([this.redirectUrlUserSuccess]);
-      } else if (this.usersService.isManagerUser()) {
-        this.router.navigate([this.redirectUrlManagerSuccess]);
+        this.router.navigate([this.redirectUrlPatientSuccess]);
+      } else if (this.usersService.isAdminUser()) {
+        this.router.navigate([this.redirectUrlAdminSuccess]);
       } else if (this.usersService.isRecepcionistUser()) {
         this.router.navigate([this.redirectUrlRecepcionistSuccess]);
       }

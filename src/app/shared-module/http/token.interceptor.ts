@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {TOKEN_NAME} from '../services/auth.const';
 import {Observable} from 'rxjs';
 
+
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 

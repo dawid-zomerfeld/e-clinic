@@ -13,7 +13,7 @@ export class PatientAuthGuard implements CanActivate {
     if (isPatient) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
       return false;
     }
   }

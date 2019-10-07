@@ -11,7 +11,7 @@ export class UsersService {
   accessToken: string;
   isDoctor: boolean;
   isPatient: boolean;
-  isManager: boolean;
+  isAdmin: boolean;
   isRecepcionist: boolean;
   user: any;
 
@@ -29,7 +29,7 @@ export class UsersService {
     console.log(decodedToken);
     this.isDoctor = getRoleFromToken(decodedToken) === 'doctor';
     this.isPatient = getRoleFromToken(decodedToken) === 'patient';
-    this.isManager = getRoleFromToken(decodedToken) === 'manager';
+    this.isAdmin = getRoleFromToken(decodedToken) === 'admin';
     this.isRecepcionist = getRoleFromToken(decodedToken) === 'recepcionist';
     this.accessToken = token.access_token;
     this.user = decodedToken.user;
@@ -48,13 +48,13 @@ export class UsersService {
     this.accessToken = null;
     this.isDoctor = false;
     this.isRecepcionist = false;
-    this.isManager = false;
+    this.isAdmin = false;
     localStorage.removeItem(TOKEN_NAME);
   }
 
 
   isLogged(): boolean {
-    return this.accessToken && (this.isDoctor || this.isPatient || this.isManager || this.isRecepcionist);
+    return this.accessToken && (this.isDoctor || this.isPatient || this.isAdmin || this.isRecepcionist);
   }
 
 
@@ -66,8 +66,8 @@ export class UsersService {
     return this.accessToken && this.isPatient;
   }
 
-  isManagerUser(): boolean {
-    return this.isManager;
+  isAdminUser(): boolean {
+    return this.isAdmin;
   }
 
   isRecepcionistUser(): boolean {

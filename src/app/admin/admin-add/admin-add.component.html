@@ -1,55 +1,10 @@
 <div class="example-sidenav-content">
   <mat-tab-group mat-stretch-tabs class="example-stretched-tabs ">
     <mat-tab label="Zatrudnij Doktora">
-
-     <div class="forms" >
-       <img src="../../../assets/images/avatar.png">
-      <form>
-
-        <mat-form-field class="example-full-width ">
-          <input matInput placeholder="Imię">
-        </mat-form-field>
-
-
-        <mat-form-field class="example-full-width ">
-          <input matInput placeholder="Nazwisko">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Hasło">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Specializacja">
-        </mat-form-field>
-      </form>
-       <button mat-raised-button color="primary" type="submit" >Dodaj pracownika</button>
-     </div>
-
+      <app-admin-add-doctor></app-admin-add-doctor>
     </mat-tab>
     <mat-tab label="Zatrudnij Recepcjoniste">
-
-      <div class="forms" >
-        <img src="../../../assets/images/avatar.png">
-        <form>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Imię">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Nazwisko">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Hasło">
-          </mat-form-field>
-        </form>
-        <button mat-raised-button color="primary" type="submit" >Dodaj pracownika</button>
-      </div>
-
+      <app-admin-add-recepcionist></app-admin-add-recepcionist>
     </mat-tab>
   </mat-tab-group>
 </div>

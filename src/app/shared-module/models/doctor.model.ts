@@ -4,4 +4,5 @@ export interface Doctor {
   lastName?: string;
   specialization?: string;
   email?: string;
+  banned?: boolean;
 }

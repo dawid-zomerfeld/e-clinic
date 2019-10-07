@@ -4,16 +4,16 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 
 
 @Injectable()
-export class ManagerAuthGuard implements CanActivate {
+export class AdminAuthGuard implements CanActivate {
   constructor(private router: Router, private usersService: UsersService) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const isManager = this.usersService.isManagerUser();
-    if (isManager) {
+    const isAdmin = this.usersService.isAdminUser();
+    if (isAdmin) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
       return false;
     }
   }
