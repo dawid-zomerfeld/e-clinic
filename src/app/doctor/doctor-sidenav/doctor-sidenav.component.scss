@@ -1,0 +1,42 @@
+.logo{
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  color: #757575;
+  margin-bottom: 30px;
+  img {
+    margin: 40px auto 0;
+    padding: 20px 0;
+    display:block;
+    border-radius: 50%;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  li {
+    cursor: pointer;
+    color: #757575;
+    padding: 15px;
+    a > i {
+      padding-right: 15px;
+      font-size: 20px;
+      position: relative;
+      transform: translateY(10%);
+    }
+  }
+  li:hover {
+    color: #202020;
+    background-color: #d3d3d3;
+    transition: linear 300ms;
+  }
+  li:focus{
+    outline: none;
+  }
+  li.active {
+    color: #202020;
+    transition: linear 300ms;
+    border-left: 3px solid #00838e;
+    outline: none;
+  }
+}

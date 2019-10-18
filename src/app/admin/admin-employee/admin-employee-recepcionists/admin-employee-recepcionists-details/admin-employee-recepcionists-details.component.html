@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+    <h3>
+      Zmiana danych pracownika
+    </h3>
+    <form [formGroup]="recepcionistForm" >
+      <mat-form-field class="example-full-width ">
+        <input matInput placeholder="Imię" formControlName="firstName">
+        <mat-error *ngIf="!recepcionistForm.get('firstName').valid && recepcionistForm.get('firstName').dirty">
+          Imie jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width ">
+        <input matInput placeholder="Nazwisko" formControlName="lastName">
+        <mat-error *ngIf="!recepcionistForm.get('lastName').valid && recepcionistForm.get('lastName').dirty">
+          Nazwisko jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" >Zapisz</button>
+  </div>
+</div>
