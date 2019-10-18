@@ -1,19 +1,21 @@
-<div class="data-container">
+<mat-spinner *ngIf="isSpinnerVisible"></mat-spinner>
+<div class="forms" *ngIf="isViewVisible">
+  <img src="../../../assets/images/avatar.png">
   <form [formGroup]="loginForm" >
 
-    <div class="form-group">
-      <div>
-          <input formControlName="email" type="text" class="form-control" placeholder="Email">
-      </div>
-      <div >
-          <input formControlName="password" type="password" class="form-control" placeholder="Hasło">
-      </div>
-    </div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').dirty">
+        Email jest <strong>wymagany</strong> i musisz podać <strong>prawdziwy</strong> adres email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Hasło" formControlName="password" type="password">
+      <mat-error *ngIf="!loginForm.get('password').valid && loginForm.get('password').dirty">
+        Hasło jest <strong>wymagane</strong> i musi zawierać od <strong>6 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
 
-    <div class="row top">
-      <div class="col-sm-12">
-        <button (click)="login()" [disabled]="loginForm.invalid" type="submit" class="btn btn text-white ">Zaloguj</button>
-      </div>
-    </div>
   </form>
+  <button mat-raised-button [disabled]="loginForm.invalid" (click)="login()"  color="primary" type="submit" >Zaloguj</button>
 </div>

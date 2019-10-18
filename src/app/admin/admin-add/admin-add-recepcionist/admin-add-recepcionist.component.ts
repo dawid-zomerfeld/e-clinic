@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AdminService} from '../../../shared-module/services/admin.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-admin-add-recepcionist',
@@ -15,6 +16,7 @@ export class AdminAddRecepcionistComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private snackBar: MatSnackBar,
     private adminService: AdminService
   ) { }
 
@@ -34,7 +36,7 @@ export class AdminAddRecepcionistComponent implements OnInit {
   addRecepcionist() {
     this.adminService.addRecepcionist(this.recepcionistForm.value).subscribe(result => {
       if (result.status === 201) {
-        console.log('OK');
+        this.snackBar.open('Pomyślnie dodano pracownika!');
       } else {
         console.log('BAD');
       }

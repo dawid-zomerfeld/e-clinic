@@ -25,10 +25,13 @@
 
   <!-- Banned Column -->
   <ng-container matColumnDef="banned">
-    <mat-header-cell *matHeaderCellDef> Zablokowany </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.banned}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> Zablokuj/Odblokuj </mat-header-cell>
+    <mat-cell *matCellDef="let element" >
+      <button (click)="bannedForm.controls.banned.setValue(true); bannedDoctor(element) "  mat-raised-button color="primary" *ngIf="element.banned===false" >Zablokuj</button>
+      <button  (click)="bannedForm.controls.banned.setValue(false); bannedDoctor(element); " mat-raised-button color="primary" *ngIf="element.banned===true" >Odblokuj</button>
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumnsDoctor"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumnsDoctor;"></mat-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumnsDoctor;"></mat-row>
 </mat-table>

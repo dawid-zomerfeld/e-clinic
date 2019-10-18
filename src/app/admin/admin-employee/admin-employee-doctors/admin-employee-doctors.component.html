@@ -29,6 +29,14 @@
     <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
   </ng-container>
 
+  <!-- Edit Column -->
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef> Edytuj Dane </mat-header-cell>
+    <mat-cell *matCellDef="let element" >
+      <button (click)="editDoctor(element)"  mat-raised-button color="primary" >Edytuj</button>
+    </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumnsDoctor"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumnsDoctor;"></mat-row>
 </mat-table>

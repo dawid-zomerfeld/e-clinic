@@ -1,4 +1,10 @@
 mat-table {
   width: 100%;
+}
 
+button {
+  width: 95px;
+  &:hover {
+    outline:none;
+  }
 }

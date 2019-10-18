@@ -12,8 +12,14 @@ import {
   MatTabsModule,
   MatListModule,
   MatButtonToggleModule,
-  MatTableModule
+  MatTableModule, MatRadioModule, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule
 } from '@angular/material';
+
+const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
+  duration: 3000,
+  verticalPosition: 'bottom',
+  horizontalPosition: 'center'
+};
 
 const MATERIAL_MODULES = [
   MatIconModule,
@@ -30,10 +36,15 @@ const MATERIAL_MODULES = [
   MatTabsModule,
   MatListModule,
   MatButtonToggleModule,
-  MatTableModule
+  MatTableModule,
+  MatRadioModule,
+  MatProgressSpinnerModule
 ];
 @NgModule({
   declarations: [],
   exports: [...MATERIAL_MODULES],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: MAT_SNACK_BAR_GLOBAL_CONFIG}
+  ]
 })
 export class MaterialModule { }

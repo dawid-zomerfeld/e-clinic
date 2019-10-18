@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../shared-module/services/auth.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
+import {error} from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-register',
@@ -12,7 +15,11 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
+  isViewVisible = true;
+  isSpinnerVisible = false;
+
   constructor(
+    private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
@@ -40,12 +47,17 @@ export class RegisterComponent implements OnInit {
   register() {
     this.authService.register(this.registerForm.value).subscribe(result => {
       if (result.status === 201) {
-        console.log('OK');
-        this.router.navigate(['/login']);
+        this.snackBar.open('Rejstracja przebiegła pomyślnie!');
+        this.isViewVisible = false;
+        this.isSpinnerVisible = true;
+        setTimeout(() =>  this.router.navigate(['login']), 3000);
       } else {
-        console.log('BAD');
+        this.snackBar.open('Błąd podczas rejestracji');
+        console.log('error');
       }
-    });
+    }
+    );
   }
-
 }
+
+

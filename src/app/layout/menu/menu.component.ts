@@ -16,6 +16,14 @@ export class MenuComponent implements OnInit {
 
   constructor(private router: Router, private usersService: UsersService) { }
 
+  register() {
+    this.router.navigate(['/register']);
+  }
+
+  login() {
+    this.router.navigate(['/login']);
+  }
+
   logout() {
     this.usersService.logout();
     this.router.navigate(['/home']);

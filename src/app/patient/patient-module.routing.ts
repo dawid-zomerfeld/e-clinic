@@ -5,11 +5,7 @@ import {AuthGuard} from '../shared-module/guards/auth-guard.service';
 import {PatientAuthGuard} from '../shared-module/guards/patient-auth-guard.service';
 
 const routes = [
-  {
-    path: 'patient',
-    component: PatientComponent,
-    canActivate: [PatientAuthGuard, AuthGuard]
-  }
+
 ];
 
 @NgModule({

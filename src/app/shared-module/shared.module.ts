@@ -12,6 +12,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {UnauthorizedInterceptor} from './http/response.interceptor';
 import {TokenInterceptor} from './http/token.interceptor';
+import {BadRequestInterceptor} from './http/BadRequestInterceptor';
 
 
 
@@ -22,6 +23,11 @@ import {TokenInterceptor} from './http/token.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BadRequestInterceptor,
       multi: true
     },
     {

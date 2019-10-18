@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {DoctorComponent} from '../doctor/doctor.component';
-import {RecepcionistComponent} from './recepcionist.component';
+
 import {RouterModule} from '@angular/router';
-import {PatientAuthGuard} from '../shared-module/guards/patient-auth-guard.service';
-import {RecepcionistAuthGuard} from '../shared-module/guards/recepcionist-auth-guard.service';
-import {AuthGuard} from '../shared-module/guards/auth-guard.service';
+
+import {RecepcionistAddVisitComponent} from './recepcionist-add-visit/recepcionist-add-visit.component';
 
 const routes = [
   {
-    path: 'recepcionist',
-    component: RecepcionistComponent,
-    canActivate: [RecepcionistAuthGuard, AuthGuard]
-  }
+    path: 'add',
+    component: RecepcionistAddVisitComponent
+  },
 ];
 
 @NgModule({
