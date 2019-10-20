@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {Doctor} from '../../../../shared-module/models/doctor.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AdminService} from '../../../../shared-module/services/admin.service';
 
 @Component({
   selector: 'app-admin-employee-doctors-details',
@@ -16,6 +17,9 @@ export class AdminEmployeeDoctorsDetailsComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: Doctor,
     private formBuilder: FormBuilder,
+    private adminService: AdminService,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<AdminEmployeeDoctorsDetailsComponent>
   ) {
     this.doctor = data;
   }
@@ -30,5 +34,9 @@ export class AdminEmployeeDoctorsDetailsComponent implements OnInit {
       lastName: [this.doctor.lastName, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
       specialization: [this.doctor.specialization, Validators.required]
     });
+  }
+
+  updateDoctor() {
+    this.dialogRef.close(this.doctorForm);
   }
 }

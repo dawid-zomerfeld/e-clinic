@@ -45,7 +45,10 @@ button {
   height: 40px;
   font-size: 15px;
   &:hover {
-    outline:none
+    outline:none;
+  }
+  &:focus {
+    outline:none;
   }
 }
 

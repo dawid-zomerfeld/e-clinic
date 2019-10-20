@@ -1,7 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output, ViewChild} from '@angular/core';
 import {Recepcionist} from '../../../../shared-module/models/recepcionist.model';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar, MatDialog} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AdminService} from '../../../../shared-module/services/admin.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-employee-recepcionists-details',
@@ -13,9 +15,14 @@ export class AdminEmployeeRecepcionistsDetailsComponent implements OnInit {
   recepcionist: Recepcionist;
   recepcionistForm: FormGroup;
 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: Recepcionist,
     private formBuilder: FormBuilder,
+    private adminService: AdminService,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<AdminEmployeeRecepcionistsDetailsComponent>
   ) {
     this.recepcionist = data;
   }
@@ -31,5 +38,9 @@ export class AdminEmployeeRecepcionistsDetailsComponent implements OnInit {
       lastName: [this.recepcionist.lastName,
         Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
     });
+  }
+
+  updateRecepcionist() {
+    this.dialogRef.close(this.recepcionistForm);
   }
 }

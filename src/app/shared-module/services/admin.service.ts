@@ -32,12 +32,24 @@ export class AdminService {
   updateRecepcionistBanned(id: number, formValue: any): Observable<any> {
     console.log(id);
     console.log(formValue);
-    return this.http.patch<any>('http://localhost:8080/admin/banned/recepcionist' + `/${id}` , formValue, {observe: 'response'});
+    return this.http.patch<any>(this.apiUrl + '/admin/banned/recepcionist' + `/${id}` , formValue, {observe: 'response'});
+  }
+
+  updateRecepcionist(id: number, formValue: any): Observable<any> {
+    console.log(id);
+    console.log(formValue);
+    return this.http.patch<any>( this.apiUrl + '/admin/employee/recepcionist' + `/${id}` , formValue, {observe: 'response'});
   }
 
   updateDoctorBanned(id: number, formValue: any): Observable<any> {
     console.log(id);
     console.log(formValue);
-    return this.http.patch<any>('http://localhost:8080/admin/banned/doctor' + `/${id}` , formValue, {observe: 'response'});
+    return this.http.patch<any>(this.apiUrl + '/admin/banned/doctor' + `/${id}` , formValue, {observe: 'response'});
+  }
+
+  updateDoctor(id: number, formValue: any): Observable<any> {
+    console.log(id);
+    console.log(formValue);
+    return this.http.patch<any>( this.apiUrl + '/admin/employee/doctor' + `/${id}` , formValue, {observe: 'response'});
   }
 }

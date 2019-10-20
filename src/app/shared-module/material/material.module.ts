@@ -12,7 +12,7 @@ import {
   MatTabsModule,
   MatListModule,
   MatButtonToggleModule,
-  MatTableModule, MatRadioModule, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule
+  MatTableModule, MatRadioModule, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule, MatDialogRef, MAT_DIALOG_DATA
 } from '@angular/material';
 
 const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
@@ -38,7 +38,7 @@ const MATERIAL_MODULES = [
   MatButtonToggleModule,
   MatTableModule,
   MatRadioModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
 ];
 @NgModule({
   declarations: [],

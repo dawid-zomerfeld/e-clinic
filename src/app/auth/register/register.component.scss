@@ -46,7 +46,10 @@ button {
   font-size: 15px;
   margin-bottom: 40px;
   &:hover {
-    outline:none
+    outline:none;
+  }
+  &:focus {
+    outline:none;
   }
 }
 

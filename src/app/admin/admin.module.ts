@@ -6,7 +6,6 @@ import {MaterialModule} from '../shared-module/material/material.module';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { AdminAddComponent } from './admin-add/admin-add.component';
 import { AdminBannedComponent } from './admin-banned/admin-banned.component';
-import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { AdminComponent } from './admin.component';
 import { AdminEmployeeComponent } from './admin-employee/admin-employee.component';
 import { AdminAddRecepcionistComponent } from './admin-add/admin-add-recepcionist/admin-add-recepcionist.component';
@@ -21,6 +20,7 @@ import { AdminBannedRecepcionistComponent } from './admin-banned/admin-banned-re
 import { AdminEmployeeDoctorsDetailsComponent } from './admin-employee/admin-employee-doctors/admin-employee-doctors-details/admin-employee-doctors-details.component';
 // tslint:disable-next-line:max-line-length
 import { AdminEmployeeRecepcionistsDetailsComponent } from './admin-employee/admin-employee-recepcionists/admin-employee-recepcionists-details/admin-employee-recepcionists-details.component';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { AdminEmployeeRecepcionistsDetailsComponent } from './admin-employee/adm
     AdminSidenavComponent,
     AdminAddComponent,
     AdminBannedComponent,
-    AdminSettingsComponent,
     AdminComponent,
     AdminEmployeeComponent,
     AdminAddRecepcionistComponent,
@@ -48,7 +47,6 @@ import { AdminEmployeeRecepcionistsDetailsComponent } from './admin-employee/adm
     AdminSidenavComponent,
     AdminAddComponent,
     AdminBannedComponent,
-    AdminSettingsComponent,
     AdminComponent,
     AdminEmployeeComponent,
     AdminAddRecepcionistComponent,
@@ -58,6 +56,8 @@ import { AdminEmployeeRecepcionistsDetailsComponent } from './admin-employee/adm
     AdminBannedDoctorComponent,
     AdminBannedRecepcionistComponent,
   ],
+  providers: [
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -65,7 +65,7 @@ import { AdminEmployeeRecepcionistsDetailsComponent } from './admin-employee/adm
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class AdminModule { }

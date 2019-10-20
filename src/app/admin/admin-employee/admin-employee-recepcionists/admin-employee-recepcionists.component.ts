@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Recepcionist} from '../../../shared-module/models/recepcionist.model';
 import {AdminService} from '../../../shared-module/services/admin.service';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 // tslint:disable-next-line:max-line-length
 import {AdminEmployeeRecepcionistsDetailsComponent} from './admin-employee-recepcionists-details/admin-employee-recepcionists-details.component';
 
@@ -9,28 +9,40 @@ import {AdminEmployeeRecepcionistsDetailsComponent} from './admin-employee-recep
 @Component({
   selector: 'app-admin-employee-recepcionists',
   templateUrl: './admin-employee-recepcionists.component.html',
-  styleUrls: ['./admin-employee-recepcionists.component.scss']
+  styleUrls: ['./admin-employee-recepcionists.component.scss'],
 })
 export class AdminEmployeeRecepcionistsComponent implements OnInit {
 
   displayedColumnsRecepcionist: string[] = ['id', 'firstName', 'lastName', 'email', 'edit'];
   dataSourceRecepcionist: Recepcionist[];
 
-
-  constructor(private adminSerive: AdminService,
+  constructor(private adminService: AdminService,
+              private snackBar: MatSnackBar,
               private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loadRecepcionists();
   }
-
-  loadRecepcionists(): void {
-    this.adminSerive.getRecepcionists().subscribe((recepcionists) => {
+  loadRecepcionists() {
+    this.adminService.getRecepcionists().subscribe((recepcionists) => {
       this.dataSourceRecepcionist = recepcionists;
+
     });
   }
   editRecepcionist(element) {
-    console.log(element);
-    this.dialog.open(AdminEmployeeRecepcionistsDetailsComponent, {data: element});
+    const dialogRef = this.dialog.open(AdminEmployeeRecepcionistsDetailsComponent, {data: element});
+    dialogRef.afterClosed().subscribe(recepcionistForm => {
+      this.adminService.updateRecepcionist(element.id, recepcionistForm.value).subscribe(result => {
+        if (result.status === 202) {
+          this.snackBar.open('Zapisano!');
+          this.loadRecepcionists();
+        } else {
+          console.log('BAD');
+          this.snackBar.open('Wystąpił błąd!');
+        }
+      });
+    });
   }
+
+
 }

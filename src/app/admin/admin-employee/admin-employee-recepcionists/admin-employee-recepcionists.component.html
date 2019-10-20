@@ -1,4 +1,7 @@
+
+
 <mat-table [dataSource]="dataSourceRecepcionist" class="mat-elevation-z8">
+
   <!-- Id Column -->
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
@@ -33,4 +36,6 @@
 
   <mat-header-row *matHeaderRowDef="displayedColumnsRecepcionist"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumnsRecepcionist;"></mat-row>
+
 </mat-table>
+
