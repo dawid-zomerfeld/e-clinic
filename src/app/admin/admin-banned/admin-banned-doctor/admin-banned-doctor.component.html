@@ -1,4 +1,8 @@
-<mat-table [dataSource]="dataSourceDoctor" class="mat-elevation-z8">
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Wyszukaj">
+</mat-form-field>
+
+<mat-table  [dataSource]="dataSourceDoctor" class="mat-elevation-z8">
   <!-- Id Column -->
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
@@ -35,3 +39,4 @@
   <mat-header-row *matHeaderRowDef="displayedColumnsDoctor"></mat-header-row>
   <mat-row  *matRowDef="let row; columns: displayedColumnsDoctor;"></mat-row>
 </mat-table>
+<mat-paginator [pageSizeOptions]="[9, 18, 20, 30]" showFirstLastButtons></mat-paginator>

@@ -1,0 +1,43 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Wyszukaj">
+</mat-form-field>
+
+
+<mat-table [dataSource]="dataSourceDoctor" class="mat-elevation-z8">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <!-- First Name Column -->
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef> Imię </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef> Nazwisko </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+  </ng-container>
+
+  <!-- Specjalization Column -->
+  <ng-container matColumnDef="specialization">
+    <mat-header-cell *matHeaderCellDef> Specjalizacja </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.specialization}} </mat-cell>
+  </ng-container>
+
+  <!-- Banned Column -->
+  <ng-container matColumnDef="visits">
+    <mat-header-cell *matHeaderCellDef>Dodaj Wizyty </mat-header-cell>
+    <mat-cell *matCellDef="let element" >
+      <button (click) = "findVisit(element)" mat-raised-button color="primary" >Wizyty</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumnsDoctor"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumnsDoctor;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>

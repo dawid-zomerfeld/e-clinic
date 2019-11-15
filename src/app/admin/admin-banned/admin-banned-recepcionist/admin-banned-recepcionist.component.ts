@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Recepcionist} from '../../../shared-module/models/recepcionist.model';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AdminService} from '../../../shared-module/services/admin.service';
-import {MatSnackBar} from '@angular/material';
+import {MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -15,10 +14,10 @@ import {Router} from '@angular/router';
 export class AdminBannedRecepcionistComponent implements OnInit {
 
   displayedColumnsRecepcionist: string[] = ['id', 'firstName', 'lastName', 'email', 'banned'];
-  dataSourceRecepcionist: Recepcionist[];
+  dataSourceRecepcionist;
   bannedForm: FormGroup;
-
-  constructor(private adminSerive: AdminService,
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  constructor(private adminService: AdminService,
               private snackBar: MatSnackBar,
               private router: Router,
               private formBuilder: FormBuilder) { }
@@ -28,9 +27,14 @@ export class AdminBannedRecepcionistComponent implements OnInit {
     this.bannedForm = this.buildBannedForm();
   }
 
-   public loadRecepcionists(): void {
-    this.adminSerive.getRecepcionists().subscribe((recepcionists) => {
-      this.dataSourceRecepcionist = recepcionists;
+  applyFilter(filterValue: string) {
+    this.dataSourceRecepcionist.filter = filterValue.trim().toLowerCase();
+  }
+
+  loadRecepcionists() {
+    this.adminService.getRecepcionists().subscribe((recepcionists) => {
+      this.dataSourceRecepcionist = new MatTableDataSource(recepcionists);
+      this.dataSourceRecepcionist.paginator = this.paginator;
     });
   }
 
@@ -42,7 +46,7 @@ export class AdminBannedRecepcionistComponent implements OnInit {
 
   bannedRecepcionist(element) {
     console.log(element);
-    this.adminSerive.updateRecepcionistBanned(element.id, this.bannedForm.value).subscribe(result => {
+    this.adminService.updateRecepcionistBanned(element.id, this.bannedForm.value).subscribe(result => {
       if (result.status === 202) {
         this.snackBar.open('Zapisano!');
       } else {

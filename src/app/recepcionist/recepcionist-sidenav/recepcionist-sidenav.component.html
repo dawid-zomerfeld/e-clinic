@@ -6,9 +6,9 @@
 
 <ul class="sidenav__list">
   <mat-divider></mat-divider>
-  <li >
+  <li [routerLink]="['search']" [routerLinkActive]="'active'">
     <a>
-      <i class="fa fa-stethoscope"></i> Aktualne wizyty
+      <i class="fa fa-stethoscope"></i> Przeglądaj wizyty
     </a>
   </li>
   <mat-divider></mat-divider>
@@ -18,13 +18,7 @@
     </a>
   </li>
   <mat-divider></mat-divider>
-  <li >
-    <a>
-      <i class="fa fa-minus"></i> Usuń wizyty
-    </a>
-  </li>
-  <mat-divider></mat-divider>
-  <li >
+  <li [routerLink]="['settings']" [routerLinkActive]="'active'">
     <a>
       <i class="fa fa-cog"></i> Moje konto
     </a>

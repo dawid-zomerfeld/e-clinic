@@ -17,6 +17,6 @@
         </mat-error>
       </mat-form-field>
     </form>
-    <button (click)="updateRecepcionist()" mat-raised-button color="primary" >Zapisz</button>
+    <button [disabled]="recepcionistForm.invalid" (click)="updateRecepcionist()" mat-raised-button color="primary" >Zapisz</button>
   </div>
 </div>

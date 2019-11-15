@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Doctor} from '../../../shared-module/models/doctor.model';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AdminService} from '../../../shared-module/services/admin.service';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -15,9 +14,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class AdminBannedDoctorComponent implements OnInit {
 
   displayedColumnsDoctor: string[] = ['id', 'firstName', 'lastName', 'email', 'banned'];
-  dataSourceDoctor: Doctor[];
+  dataSourceDoctor;
   bannedForm: FormGroup;
-
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private adminService: AdminService,
               private snackBar: MatSnackBar,
               private router: Router,
@@ -27,10 +26,15 @@ export class AdminBannedDoctorComponent implements OnInit {
     this.loadDoctors();
     this.bannedForm = this.buildBannedForm();
   }
+  applyFilter(filterValue: string) {
+    this.dataSourceDoctor.filter = filterValue.trim().toLowerCase();
+  }
+
 
   loadDoctors(): void {
     this.adminService.getDoctors().subscribe((doctors) => {
-      this.dataSourceDoctor = doctors;
+      this.dataSourceDoctor = new MatTableDataSource(doctors);
+      this.dataSourceDoctor.paginator = this.paginator;
     });
   }
   buildBannedForm() {

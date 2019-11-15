@@ -20,7 +20,7 @@ import { AdminBannedRecepcionistComponent } from './admin-banned/admin-banned-re
 import { AdminEmployeeDoctorsDetailsComponent } from './admin-employee/admin-employee-doctors/admin-employee-doctors-details/admin-employee-doctors-details.component';
 // tslint:disable-next-line:max-line-length
 import { AdminEmployeeRecepcionistsDetailsComponent } from './admin-employee/admin-employee-recepcionists/admin-employee-recepcionists-details/admin-employee-recepcionists-details.component';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatPaginatorModule} from '@angular/material';
 
 
 @NgModule({
@@ -66,6 +66,7 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material'
     ReactiveFormsModule,
     SharedModule,
     FormsModule,
+    MatPaginatorModule,
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,54 @@
+<div class="dashboard">
+
+  <div class="content">
+
+
+    <table mat-table [dataSource]="dataSourceVisit" matSort class="mat-elevation-z8">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Godzina </th>
+        <td mat-cell *matCellDef="let element"> {{element.hour}} :  {{(element.minutes == 0 ? '00' : (element.minutes < 10 ? '0' + element.minutes : element.minutes))}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef> Czas trwania </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration}} Minut</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container class="symbolChange" matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Cena </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Zarezerwuj </th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary"  >Zarezerwuj</button></td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <div class="calendar">
+    <app-add-visit-calendar (emitterData)="chooseSelectDay($event)"></app-add-visit-calendar>
+    <mat-divider></mat-divider>
+    <p class="first">Wizyty Doktora: {{doctor?.firstName}} {{doctor?.lastName}}</p>
+    <p class="second">Wybrana Data <br>{{selectedDay | date:"dd/MM/yy"}}</p>
+    <button  mat-raised-button color="primary" >Dodaj Wizyty</button>
+  </div>
+</div>

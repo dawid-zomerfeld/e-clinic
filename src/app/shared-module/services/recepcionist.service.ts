@@ -13,7 +13,11 @@ export class RecepcionistService {
   constructor(private http: HttpClient) {
   }
 
-  getDoctors(): Observable<any> {
+  getDoctors() {
     return this.http.get<any>(this.apiUrl + '/recepcionist/add/doctors');
+  }
+
+  getDoctor(id: number) {
+    return this.http.get<any>(this.apiUrl + '/recepcionist/add/doctors' + `/${id}`);
   }
 }

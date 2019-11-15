@@ -1,0 +1,65 @@
+.content {
+  position:relative; left: 0;
+  float: left;
+  width: 75%;
+  table {
+    width: 120%;
+  }
+  button {
+    &:hover {
+      outline:none;
+    }
+    &:focus {
+      outline:none;
+    }
+    &:active {
+      outline:none;
+    }
+  }
+}
+
+
+
+.calendar {
+  width: 20%;
+  min-height: 800px;
+  background-color: #f2f2f2;
+  float: left;
+  position: fixed;
+  top: 64px;
+  right: 0;
+  border-left: 1px solid #d5d5d5;
+  p {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10%;
+  }
+  button {
+    width: 50%;
+    margin: 30% 25%;
+    &:hover {
+      outline:none;
+    }
+    &:focus {
+      outline:none;
+    }
+    &:active {
+      outline:none;
+    }
+  }
+}
+
+
+
+
+.mat-form-field {
+  width: 50%;
+  margin: 0 25%;
+  text-align: center;
+  font-size: 15px;
+}
+.center > .mat-simple-snackbar {
+  justify-content: center;
+}
+
+

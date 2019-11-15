@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col">
+    <h1 mat-dialog-title>Dodaj wizyty</h1>
+    <form [formGroup]="visitForm">
+      <mat-form-field class="example-full-width ">
+        <input matInput placeholder="Ilość wizyt" type="number" formControlName="quantityVisit">
+        <mat-error *ngIf="visitForm.controls.quantityVisit.hasError('required')">
+          To pole jest <strong>wymagane</strong>
+        </mat-error>
+        <mat-error *ngIf="visitForm.controls.quantityVisit.hasError('max')">
+          Ilość wizyt jest <strong>za duża</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width ">
+        <mat-select placeholder="Czas trwania wizyt" formControlName="durationVisit">
+          <mat-option *ngFor="let duration of durationMinutes" [value]="duration">
+            <span>{{ duration }} Minut</span>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!visitForm.get('durationVisit').valid && visitForm.get('durationVisit').dirty">
+          To pole jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Koszt wizyty" type="number" formControlName="priceVisit">
+        <mat-error *ngIf="!visitForm.get('priceVisit').valid && visitForm.get('priceVisit').dirty">
+          To pole jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Rozpoczęcie wizyt" formControlName="startVisit">
+          <mat-option *ngFor="let time of times" [value]="time" >
+            <span>{{ time }}</span>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!visitForm.get('startVisit').valid && visitForm.get('startVisit').dirty">
+          To pole jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+    <button *ngIf="ifPast()" [disabled]="visitForm.invalid" (click)="addVisit()" mat-raised-button color="primary" >Zapisz</button>
+    <mat-error *ngIf="!ifPast()"><h6>Nie można dodawać wizyt z przeszłą datą!!!!</h6></mat-error>
+    <button *ngIf="!ifPast()" [disabled]="true" (click)="addVisit()" mat-raised-button color="primary" >Zapisz</button>
+
+  </div>
+</div>

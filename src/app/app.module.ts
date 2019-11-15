@@ -14,6 +14,8 @@ import {DoctorModule} from './doctor/doctor.module';
 import {RecepcionistModule} from './recepcionist/recepcionist.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AdminModule} from './admin/admin.module';
+import {MatPaginatorIntlCro} from './shared-module/paginator/paginator';
+import {MatPaginatorIntl} from '@angular/material';
 
 
 
@@ -37,7 +39,7 @@ import {AdminModule} from './admin/admin.module';
     BrowserAnimationsModule,
     AdminModule
   ],
-  providers: [],
+  providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

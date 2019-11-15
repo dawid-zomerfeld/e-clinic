@@ -1,3 +1,8 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Wyszukaj">
+</mat-form-field>
+
+
 <mat-table [dataSource]="dataSourceRecepcionist" class="mat-elevation-z8">
   <!-- Id Column -->
   <ng-container matColumnDef="id">
@@ -35,3 +40,5 @@
   <mat-header-row *matHeaderRowDef="displayedColumnsRecepcionist"></mat-header-row>
   <mat-row  *matRowDef="let row; columns: displayedColumnsRecepcionist;"></mat-row>
 </mat-table>
+
+<mat-paginator [pageSizeOptions]="[9, 18, 20, 30]" showFirstLastButtons></mat-paginator>

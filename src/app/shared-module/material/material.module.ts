@@ -1,19 +1,31 @@
+
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule,
+  MatCardModule,
+  MatCheckboxModule,
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule,
+  MatSelectModule,
   MatSnackBarModule,
   MatToolbarModule,
   MatSidenavModule,
   MatTabsModule,
   MatListModule,
   MatButtonToggleModule,
-  MatTableModule, MatRadioModule, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatProgressSpinnerModule, MatDialogRef, MAT_DIALOG_DATA
+  MatTableModule,
+  MatRadioModule,
+  MatSnackBarConfig,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatProgressSpinnerModule,
+  MAT_DIALOG_DATA,
+  MatDatepickerModule, MatNativeDateModule, MatCalendar
 } from '@angular/material';
+
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {MatTableDataSource} from '@angular/material/table';
 
 const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
   duration: 3000,
@@ -39,6 +51,9 @@ const MATERIAL_MODULES = [
   MatTableModule,
   MatRadioModule,
   MatProgressSpinnerModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatMomentDateModule,
 ];
 @NgModule({
   declarations: [],

@@ -3,6 +3,8 @@ import {TOKEN_NAME} from './auth.const';
 import {HttpClient} from '@angular/common/http';
 import {getRoleFromToken} from '../helpers/token.helper';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {Observable} from 'rxjs';
+import {Visit} from '../models/visit';
 
 
 @Injectable()
@@ -15,7 +17,7 @@ export class UsersService {
   isRecepcionist: boolean;
   user: any;
 
-
+  apiUrl = 'http://localhost:8080';
 
   constructor( private http: HttpClient) {
     const token = JSON.parse(localStorage.getItem(TOKEN_NAME));
@@ -72,5 +74,17 @@ export class UsersService {
 
   isRecepcionistUser(): boolean {
     return this.isRecepcionist;
+  }
+
+  getDoctors() {
+    return this.http.get<any>(this.apiUrl + '/patient/search/doctors');
+  }
+
+  getDoctor(id: number) {
+    return this.http.get<any>(this.apiUrl + '/patient/search/doctors' + `/${id}`);
+  }
+
+  getVisits(id, day, month, year): Observable<Visit[]> {
+    return this.http.get<Visit[]>(this.apiUrl + '/patient/search/doctors' + `/${id}` + '/visits' + `/${day}` + `/${month}` + `/${year}`);
   }
 }

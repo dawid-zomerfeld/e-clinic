@@ -6,21 +6,15 @@
 
 <ul class="sidenav__list">
   <mat-divider></mat-divider>
-  <li >
+  <li [routerLink]="['search']" [routerLinkActive]="'active'">
     <a>
-      <i class="fa fa-users"></i> Przeglądaj pracowników
+      <i class="fa fa-search"></i> Zarezerwuj wizyte
     </a>
   </li>
   <mat-divider></mat-divider>
   <li >
     <a>
-      <i class="fa fa-plus"></i> Zatrudnij pracownika
-    </a>
-  </li>
-  <mat-divider></mat-divider>
-  <li >
-    <a>
-      <i class="fa fa-minus"></i> Zablokuj pracownika
+      <i class="fa fa-plus-circle"></i> Moje wizyty
     </a>
   </li>
   <mat-divider></mat-divider>

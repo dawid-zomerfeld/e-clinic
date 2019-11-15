@@ -23,6 +23,6 @@
         </mat-error>
       </mat-form-field>
     </form>
-    <button (click)="updateDoctor()" mat-raised-button color="primary" >Zapisz</button>
+    <button [disabled]="doctorForm.invalid"  (click)="updateDoctor()" mat-raised-button color="primary" >Zapisz</button>
   </div>
 </div>

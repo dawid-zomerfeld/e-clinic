@@ -1,7 +1,6 @@
 <mat-spinner *ngIf="isSpinnerVisible"></mat-spinner>
 
 <div class="forms" *ngIf="isViewVisible">
-  <img src="../../../assets/images/avatar.png">
   <form [formGroup]="registerForm" >
 
     <mat-form-field class="example-full-width ">
@@ -23,7 +22,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Hasło" formControlName="password">
+      <input matInput placeholder="Hasło" formControlName="password" type="password">
       <mat-error *ngIf="!registerForm.get('password').valid && registerForm.get('password').dirty">
         Hasło jest <strong>wymagane</strong> i musi zawierać od <strong>6 do 20</strong> znaków
       </mat-error>
@@ -31,7 +30,7 @@
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Pesel" formControlName="pesel">
       <mat-error *ngIf="!registerForm.get('pesel').valid && registerForm.get('pesel').dirty">
-        Pesel jest <strong>wymagany</strong> i musi zawierać od <strong>11</strong> znaków
+        Pesel jest <strong>wymagany</strong> i musi zawierać <strong>11</strong> znaków
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">

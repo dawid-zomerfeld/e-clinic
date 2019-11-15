@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Recepcionist} from '../../../shared-module/models/recepcionist.model';
 import {AdminService} from '../../../shared-module/services/admin.service';
-import {MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
+import {MatDialog, MatDialogRef, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 // tslint:disable-next-line:max-line-length
 import {AdminEmployeeRecepcionistsDetailsComponent} from './admin-employee-recepcionists-details/admin-employee-recepcionists-details.component';
 
@@ -14,7 +13,8 @@ import {AdminEmployeeRecepcionistsDetailsComponent} from './admin-employee-recep
 export class AdminEmployeeRecepcionistsComponent implements OnInit {
 
   displayedColumnsRecepcionist: string[] = ['id', 'firstName', 'lastName', 'email', 'edit'];
-  dataSourceRecepcionist: Recepcionist[];
+  dataSourceRecepcionist;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private adminService: AdminService,
               private snackBar: MatSnackBar,
@@ -23,10 +23,13 @@ export class AdminEmployeeRecepcionistsComponent implements OnInit {
   ngOnInit() {
     this.loadRecepcionists();
   }
+  applyFilter(filterValue: string) {
+    this.dataSourceRecepcionist.filter = filterValue.trim().toLowerCase();
+  }
   loadRecepcionists() {
     this.adminService.getRecepcionists().subscribe((recepcionists) => {
-      this.dataSourceRecepcionist = recepcionists;
-
+      this.dataSourceRecepcionist = new MatTableDataSource(recepcionists);
+      this.dataSourceRecepcionist.paginator = this.paginator;
     });
   }
   editRecepcionist(element) {

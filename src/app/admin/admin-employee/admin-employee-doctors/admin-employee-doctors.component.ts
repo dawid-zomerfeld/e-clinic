@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AdminService} from '../../../shared-module/services/admin.service';
 import {Doctor} from '../../../shared-module/models/doctor.model';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {AdminEmployeeDoctorsDetailsComponent} from './admin-employee-doctors-details/admin-employee-doctors-details.component';
+
+export interface PeriodicElement {
+  duration: string;
+  time: string;
+  price: string;
+  status: string;
+}
+
 
 @Component({
   selector: 'app-admin-employee-doctors',
@@ -11,9 +19,12 @@ import {AdminEmployeeDoctorsDetailsComponent} from './admin-employee-doctors-det
 })
 export class AdminEmployeeDoctorsComponent implements OnInit {
 
-  displayedColumnsDoctor: string[] = ['id', 'firstName', 'lastName', 'specialization', 'email', 'edit'];
-  dataSourceDoctor: Doctor[];
 
+  displayedColumnsDoctor: string[] = ['id', 'firstName', 'lastName', 'specialization', 'email', 'edit'];
+  dataSourceDoctor;
+
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private adminService: AdminService,
               private snackBar: MatSnackBar,
               private dialog: MatDialog) { }
@@ -21,10 +32,14 @@ export class AdminEmployeeDoctorsComponent implements OnInit {
   ngOnInit() {
     this.loadDoctors();
   }
+  applyFilter(filterValue: string) {
+    this.dataSourceDoctor.filter = filterValue.trim().toLowerCase();
+  }
 
   loadDoctors(): void {
     this.adminService.getDoctors().subscribe((doctors) => {
-      this.dataSourceDoctor = doctors;
+      this.dataSourceDoctor = new MatTableDataSource(doctors);
+      this.dataSourceDoctor.paginator = this.paginator;
     });
   }
 

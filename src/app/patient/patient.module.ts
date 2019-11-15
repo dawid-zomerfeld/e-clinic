@@ -7,9 +7,13 @@ import { PatientSidenavComponent } from './patient-sidenav/patient-sidenav.compo
 import {MaterialModule} from '../shared-module/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared-module/shared.module';
+import { PatientSearchVisitComponent } from './patient-search-visit/patient-search-visit.component';
+import {MatPaginatorModule, MatSortModule} from '@angular/material';
+import { SearchVisitDetailsComponent } from './patient-search-visit/search-visit-details/search-visit-details.component';
+import {RecepcionistModule} from '../recepcionist/recepcionist.module';
 
 @NgModule({
-  declarations: [PatientComponent, PatientSidenavComponent],
+  declarations: [PatientComponent, PatientSidenavComponent, PatientSearchVisitComponent, SearchVisitDetailsComponent],
   exports: [PatientComponent, PatientSidenavComponent],
   imports: [
     CommonModule,
@@ -18,7 +22,10 @@ import {SharedModule} from '../shared-module/shared.module';
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule,
+    RecepcionistModule,
+    MatSortModule
   ]
 })
 export class PatientModule { }

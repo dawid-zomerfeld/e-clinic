@@ -16,6 +16,9 @@ export class BadRequestInterceptor implements HttpInterceptor {
     return next
       .handle(req)
       .pipe(catchError((error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            this.snackBar.open('O podanej godzinie istnieje już wizyta!');
+          }
           if (error.status === 400) {
             if (error.message === 'Http failure response for http://localhost:8080/oauth/token: 400 OK') {
               this.snackBar.open('Nieprawidłowy adres email, bądź hasło!');
