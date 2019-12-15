@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {RecepcionistService} from '../../../shared-module/services/recepcionist.service';
-
 import {ActivatedRoute} from '@angular/router';
 import {Doctor} from '../../../shared-module/models/doctor.model';
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
@@ -61,9 +60,9 @@ export class AddVisitDetailsComponent implements OnInit {
     const month = this.stringDate.slice(3, 5);
     const year = this.stringDate.slice(6, 10);
     this.visitService.getVisits(id, day, month, year).subscribe(visits => {
-        this.dataSourceVisit = new MatTableDataSource(visits);
-        this.dataSourceVisit.sort  = this.sort;
-        console.log(visits);
+      const newVisits = visits.filter( v => v.status === 'NOWA');
+      this.dataSourceVisit = new MatTableDataSource(newVisits);
+      this.dataSourceVisit.paginator = this.paginator;
     });
   }
 

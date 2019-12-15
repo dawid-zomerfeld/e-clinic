@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {TOKEN_NAME} from './auth.const';
 import {HttpClient} from '@angular/common/http';
-import {getRoleFromToken} from '../helpers/token.helper';
+import {getIdFromToken, getRoleFromToken} from '../helpers/token.helper';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Observable} from 'rxjs';
 import {Visit} from '../models/visit';
@@ -86,5 +86,25 @@ export class UsersService {
 
   getVisits(id, day, month, year): Observable<Visit[]> {
     return this.http.get<Visit[]>(this.apiUrl + '/patient/search/doctors' + `/${id}` + '/visits' + `/${day}` + `/${month}` + `/${year}`);
+  }
+
+  reserveVisit(id: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/patient' + `/${getIdFromToken()}` + '/reserve/visits' + `/${id}` , {observe: 'response'});
+  }
+
+  getPatient() {
+    return this.http.get<any>(this.apiUrl + '/patient/account' + `/${getIdFromToken()}`);
+  }
+
+  updatePatient(formValue: any): Observable<any> {
+    return this.http.patch<any>( this.apiUrl + '/patient/account/update' + `/${getIdFromToken()}` , formValue, {observe: 'response'});
+  }
+
+  getPatientVisits() {
+    return this.http.get<Visit[]>(this.apiUrl + '/patient/visits' + `/${getIdFromToken()}`);
+  }
+
+  cancelVisit(id: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/patient/visits/cancel'  + `/${id}` , {observe: 'response'});
   }
 }

@@ -11,10 +11,17 @@ import { PatientSearchVisitComponent } from './patient-search-visit/patient-sear
 import {MatPaginatorModule, MatSortModule} from '@angular/material';
 import { SearchVisitDetailsComponent } from './patient-search-visit/search-visit-details/search-visit-details.component';
 import {RecepcionistModule} from '../recepcionist/recepcionist.module';
+import { PatientMyVisitsComponent } from './patient-my-visits/patient-my-visits.component';
+import { PatientMyVisitsEndedComponent } from './patient-my-visits/patient-my-visits-ended/patient-my-visits-ended.component';
+import { PatientMyVisitsCurrnetComponent } from './patient-my-visits/patient-my-visits-currnet/patient-my-visits-currnet.component';
+import { PatientMyAccountComponent } from './patient-my-account/patient-my-account.component';
+import { PatientMyVisitsCurrnetEndedComponent } from './patient-my-visits/patient-my-visits-ended/patient-my-visits-currnet-ended/patient-my-visits-currnet-ended.component';
 
 @NgModule({
-  declarations: [PatientComponent, PatientSidenavComponent, PatientSearchVisitComponent, SearchVisitDetailsComponent],
+  // tslint:disable-next-line:max-line-length
+  declarations: [PatientComponent, PatientSidenavComponent, PatientSearchVisitComponent, SearchVisitDetailsComponent, PatientMyVisitsComponent, PatientMyVisitsEndedComponent, PatientMyVisitsCurrnetComponent, PatientMyAccountComponent, PatientMyVisitsCurrnetEndedComponent],
   exports: [PatientComponent, PatientSidenavComponent],
+  entryComponents: [PatientMyVisitsCurrnetEndedComponent],
   imports: [
     CommonModule,
     PatientModuleRouting,

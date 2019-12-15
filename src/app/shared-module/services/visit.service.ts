@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {NewVisit} from '../models/new-visit';
 import {Visit} from '../models/visit';
+import {getIdFromToken} from '../helpers/token.helper';
 
 
 
@@ -16,8 +17,6 @@ export class VisitService {
   }
 
   addVisits(id: number, newVisit: NewVisit): Observable<any> {
-    console.log(id);
-    console.log(newVisit);
     return this.http.post<any>(this.apiUrl + '/recepcionist/add/doctors' + `/${id}` + '/visits' , newVisit, {observe: 'response'});
   }
 
@@ -25,7 +24,12 @@ export class VisitService {
     return this.http.get<Visit[]>(this.apiUrl + '/recepcionist/add/doctors' + `/${id}` + '/visits' + `/${day}` + `/${month}` + `/${year}`);
   }
 
+  getAllVisitsByDate(day, month, year): Observable<Visit[]> {
+    return this.http.get<Visit[]>(this.apiUrl + '/recepcionist/search/visits' + `/${day}` + `/${month}` + `/${year}`);
+  }
+
   deleteVisits(idDocotr, idVisit): Observable<any> {
     return this.http.delete<any>(this.apiUrl + '/recepcionist/add/doctors' + `/${idDocotr}` + '/visits' + `/${idVisit}`, {observe: 'response'});
   }
+
 }

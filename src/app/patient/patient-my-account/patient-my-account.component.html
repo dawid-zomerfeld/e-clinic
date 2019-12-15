@@ -1,0 +1,54 @@
+
+<div class="forms" >
+  <form [formGroup]="editForm" >
+
+    <mat-form-field class="example-full-width ">
+      <input matInput placeholder="Imię" formControlName="firstName">
+      <mat-error *ngIf="!editForm.get('firstName').valid && editForm.get('firstName').dirty">
+        Imie jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width ">
+      <input matInput placeholder="Nazwisko" formControlName="lastName">
+      <mat-error *ngIf="!editForm.get('lastName').valid && editForm.get('lastName').dirty">
+        Nazwisko jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Pesel" formControlName="pesel">
+      <mat-error *ngIf="!editForm.get('pesel').valid && editForm.get('pesel').dirty">
+        Pesel jest <strong>wymagany</strong> i musi zawierać <strong>11</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Adres" formControlName="address">
+      <mat-error *ngIf="!editForm.get('address').valid && editForm.get('address').dirty">
+        Adres jest <strong>wymagany</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Kod pocztowy" formControlName="postcode">
+      <mat-error *ngIf="!editForm.get('postcode').valid && editForm.get('postcode').dirty">
+        Kod pocztowy jest <strong>wymagany</strong> i musi zawierać od <strong>6</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Miasto" formControlName="town">
+      <mat-error *ngIf="!editForm.get('town').valid && editForm.get('town').dirty">
+        Miasto jest <strong>wymagane</strong> i musi zawierać od <strong>2 do 20</strong> znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Telefon" formControlName="telephone">
+      <mat-error *ngIf="!editForm.get('telephone').valid && editForm.get('telephone').dirty">
+        Telefon jest <strong>wymagany</strong> i musi zawierać od <strong>8 do 12</strong> znaków
+      </mat-error>
+    </mat-form-field>
+
+
+  </form>
+  <button mat-raised-button [disabled]="editForm.invalid" (click)="editPatient()"  color="primary" type="submit" >Edytuj</button>
+</div>
+
+
+

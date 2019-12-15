@@ -8,6 +8,7 @@ import {RecepcionistSearchVisitComponent} from './recepcionist-search-visit/rece
 import {RecepcionistSettingsComponent} from './recepcionist-settings/recepcionist-settings.component';
 
 const routes = [
+  {path: 'recepcionist', redirectTo: 'recepcionist/search', pathMatch: 'full'},
   {
     path: 'add',
     component: RecepcionistAddVisitComponent

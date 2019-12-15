@@ -6,15 +6,15 @@
 
 <ul class="sidenav__list">
   <mat-divider></mat-divider>
-  <li >
+  <li [routerLink]="['visits']" [routerLinkActive]="'active'">
     <a>
-      <i class="fa fa-users"></i> Przeglądaj pacjentów
+      <i class="fa fa-plus-circle"></i> Przeglądaj wizyty
     </a>
   </li>
   <mat-divider></mat-divider>
-  <li >
+  <li [routerLink]="['patients']" [routerLinkActive]="'active'">
     <a>
-      <i class="fa fa-plus-circle"></i> Przeglądaj wizyty
+      <i class="fa fa-users"></i> Przeglądaj pacjentów
     </a>
   </li>
   <mat-divider></mat-divider>

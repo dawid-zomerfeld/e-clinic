@@ -5,6 +5,8 @@ import {ActivatedRoute} from '@angular/router';
 import {VisitService} from '../../../shared-module/services/visit.service';
 import {UsersService} from '../../../shared-module/services/users.service';
 import * as moment from 'moment';
+import {getIdFromToken} from '../../../shared-module/helpers/token.helper';
+import {visit} from '@angular/compiler-cli/src/ngtsc/util/src/visitor';
 
 @Component({
   selector: 'app-search-visit-details',
@@ -17,7 +19,7 @@ export class SearchVisitDetailsComponent implements OnInit {
   selectedDay?: Date = new Date();
   stringDate = Date();
 
-  displayedColumns: string[] = ['time', 'duration', 'status', 'price', 'delete'];
+  displayedColumns: string[] = ['time', 'duration',  'price', 'status', 'delete'];
   dataSourceVisit;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -30,8 +32,7 @@ export class SearchVisitDetailsComponent implements OnInit {
   constructor(private userSerive: UsersService,
               private route: ActivatedRoute,
               private dialog: MatDialog,
-              private snackBar: MatSnackBar,
-              private visitService: VisitService) { }
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loadDoctor();
@@ -52,16 +53,24 @@ export class SearchVisitDetailsComponent implements OnInit {
     });
   }
 
+
   loadVisits() {
     const id = this.route.snapshot.params.key;
     const day = this.stringDate.slice(0, 2);
     const month = this.stringDate.slice(3, 5);
     const year = this.stringDate.slice(6, 10);
     this.userSerive.getVisits(id, day, month, year).subscribe(visits => {
-      this.dataSourceVisit = new MatTableDataSource(visits);
-      this.dataSourceVisit.sort  = this.sort;
-      console.log(visits);
+      const newVisits = visits.filter( v => v.status === 'NOWA');
+      this.dataSourceVisit = new MatTableDataSource(newVisits);
+      this.dataSourceVisit.paginator  = this.paginator;
+      console.log(newVisits);
     });
   }
 
+  reserveVisit(idVisit) {
+    this.userSerive.reserveVisit(idVisit).subscribe(data => {
+      console.log(data);
+      this.loadVisits();
+    });
+  }
 }

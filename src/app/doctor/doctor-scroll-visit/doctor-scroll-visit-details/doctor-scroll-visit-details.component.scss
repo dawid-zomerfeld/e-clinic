@@ -1,0 +1,28 @@
+
+form {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 150px;
+  width: 100%;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+
+
+button {
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  display: block;
+  margin: 40px auto 0;
+  &:hover {
+    outline:none;
+  }
+  &:focus {
+    outline:none;
+  }
+}

@@ -17,25 +17,23 @@
         <td mat-cell *matCellDef="let element"> {{element.duration}} Minut</td>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container class="symbolChange" matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-      </ng-container>
-
       <!-- Weight Column -->
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef> Cena </th>
         <td mat-cell *matCellDef="let element"> {{element.price}} </td>
       </ng-container>
 
+      <!-- Symbol Column -->
+      <ng-container class="symbolChange" matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
       <!-- Delete Column -->
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef> Zarezerwuj </th>
-        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary"  >Zarezerwuj</button></td>
+        <td mat-cell *matCellDef="let element"> <button (click)="reserveVisit(element.id)" mat-raised-button color="primary"  >Zarezerwuj</button></td>
       </ng-container>
-
-
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

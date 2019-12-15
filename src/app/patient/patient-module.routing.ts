@@ -7,6 +7,8 @@ import {RecepcionistAddVisitComponent} from '../recepcionist/recepcionist-add-vi
 import {PatientSearchVisitComponent} from './patient-search-visit/patient-search-visit.component';
 import {AddVisitDetailsComponent} from '../recepcionist/recepcionist-add-visit/add-visit-details/add-visit-details.component';
 import {SearchVisitDetailsComponent} from './patient-search-visit/search-visit-details/search-visit-details.component';
+import {PatientMyVisitsComponent} from './patient-my-visits/patient-my-visits.component';
+import {PatientMyAccountComponent} from './patient-my-account/patient-my-account.component';
 
 const routes = [
   {path: 'patient', redirectTo: 'patient/search', pathMatch: 'full'},
@@ -17,6 +19,14 @@ const routes = [
   {
     path: 'search/:key',
     component: SearchVisitDetailsComponent
+  },
+  {
+    path: 'visits',
+    component: PatientMyVisitsComponent
+  },
+  {
+    path: 'account',
+    component: PatientMyAccountComponent
   },
 ];
 
