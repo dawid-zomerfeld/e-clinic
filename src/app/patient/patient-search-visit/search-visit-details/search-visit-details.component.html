@@ -32,7 +32,10 @@
       <!-- Delete Column -->
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef> Zarezerwuj </th>
-        <td mat-cell *matCellDef="let element"> <button (click)="reserveVisit(element.id)" mat-raised-button color="primary"  >Zarezerwuj</button></td>
+        <td mat-cell *matCellDef="let element">
+          <button *ngIf="ifPast(element)" (click)="reserveVisit(element.id)" mat-raised-button color="primary"  >Zarezerwuj</button>
+          <button *ngIf="!ifPast(element)" [disabled]="true" (click)="reserveVisit(element.id)" mat-raised-button color="primary"  >Zarezerwuj</button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -47,6 +50,5 @@
     <mat-divider></mat-divider>
     <p class="first">Wizyty Doktora: {{doctor?.firstName}} {{doctor?.lastName}}</p>
     <p class="second">Wybrana Data <br>{{selectedDay | date:"dd/MM/yy"}}</p>
-    <button  mat-raised-button color="primary" >Dodaj Wizyty</button>
   </div>
 </div>

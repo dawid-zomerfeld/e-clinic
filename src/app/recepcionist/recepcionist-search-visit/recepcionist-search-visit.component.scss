@@ -21,7 +21,7 @@
   p {
     font-size: 16px;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 40%;
   }
   button {
     width: 50%;
@@ -35,7 +35,17 @@
   }
 }
 
-
+button {
+  &:hover {
+    outline:none;
+  }
+  &:focus {
+    outline:none;
+  }
+  &:active {
+    outline:none;
+  }
+}
 
 /* Structure */
 table {

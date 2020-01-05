@@ -32,13 +32,16 @@
     <!-- Delete Column -->
     <ng-container matColumnDef="pay">
       <th mat-header-cell *matHeaderCellDef> Opłać </th>
-      <td mat-cell *matCellDef="let element">   <button  mat-raised-button color="primary" >Opłać</button></td>
+      <td mat-cell *matCellDef="let element">   <button [disabled]="element.status === 'OPŁACONA'" (click)="payVisit(element.id)" mat-raised-button color="primary" >Opłać</button></td>
     </ng-container>
 
     <!-- Delete Column -->
     <ng-container matColumnDef="cancel">
       <th mat-header-cell *matHeaderCellDef> Odwołaj </th>
-      <td mat-cell *matCellDef="let element">   <button  (click)="cancelVisit(element.id)" mat-raised-button color="primary">Odwołaj</button></td>
+      <td mat-cell *matCellDef="let element">
+        <button *ngIf="ifPast(element)" (click)="cancelVisit(element.id)" mat-raised-button color="primary">Odwołaj</button>
+        <button *ngIf="!ifPast(element)" [disabled]="true"  (click)="cancelVisit(element.id)" mat-raised-button color="primary">Odwołaj</button>
+        </td>
     </ng-container>
 
 

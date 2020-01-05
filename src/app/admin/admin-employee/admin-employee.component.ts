@@ -1,12 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Doctor} from '../../shared-module/models/doctor.model';
-import {Recepcionist} from '../../shared-module/models/recepcionist.model';
-
-
-
-
-
-
 
 @Component({
   selector: 'app-admin-employee',

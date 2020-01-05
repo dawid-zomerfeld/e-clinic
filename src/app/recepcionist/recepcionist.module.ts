@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {RecepcionistComponent} from './recepcionist.component';
 import {RecepcionistRoutingModule} from './recepcionist-routing.module';
 import {RouterModule} from '@angular/router';
-import {MaterialModule} from '../shared-module/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared-module/shared.module';
 import { RecepcionistSidenavComponent } from './recepcionist-sidenav/recepcionist-sidenav.component';
@@ -13,7 +12,6 @@ import { AddVisitCalendarComponent } from './recepcionist-add-visit/add-visit-ca
 import { AddVisitDialogComponent } from './recepcionist-add-visit/add-visit-dialog/add-visit-dialog.component';
 import {MatPaginatorModule, MatSortModule} from '@angular/material';
 import { RecepcionistSearchVisitComponent } from './recepcionist-search-visit/recepcionist-search-visit.component';
-import { RecepcionistSettingsComponent } from './recepcionist-settings/recepcionist-settings.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +21,7 @@ import { RecepcionistSettingsComponent } from './recepcionist-settings/recepcion
     AddVisitDetailsComponent,
     AddVisitCalendarComponent,
     AddVisitDialogComponent,
-    RecepcionistSearchVisitComponent,
-    RecepcionistSettingsComponent],
+    RecepcionistSearchVisitComponent],
   exports: [RecepcionistComponent, RecepcionistSidenavComponent, AddVisitCalendarComponent],
   entryComponents: [
     AddVisitDialogComponent,

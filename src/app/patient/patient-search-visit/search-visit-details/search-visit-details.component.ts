@@ -2,11 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Doctor} from '../../../shared-module/models/doctor.model';
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
-import {VisitService} from '../../../shared-module/services/visit.service';
 import {UsersService} from '../../../shared-module/services/users.service';
 import * as moment from 'moment';
-import {getIdFromToken} from '../../../shared-module/helpers/token.helper';
-import {visit} from '@angular/compiler-cli/src/ngtsc/util/src/visitor';
+
 
 @Component({
   selector: 'app-search-visit-details',
@@ -67,9 +65,48 @@ export class SearchVisitDetailsComponent implements OnInit {
     });
   }
 
+  ifPast(element) {
+    const now = new Date();
+    if (Number(element.year) > now.getFullYear()) {
+      return true;
+    }
+    if (Number(element.year) === now.getFullYear()) {
+      if (Number(element.month) > now.getMonth() + 1) {
+        return true;
+      }
+    }
+    if (Number(element.year) === now.getFullYear()) {
+      if (Number(element.month) === now.getMonth() + 1) {
+        if (Number(element.day) > now.getDate()) {
+          return true;
+        }
+      }
+    }
+    if (Number(element.year) === now.getFullYear()) {
+      if (Number(element.month) === now.getMonth() + 1) {
+        if (Number(element.day) === now.getDate()) {
+          if (Number(element.hour) > now.getHours()) {
+            return true;
+          }
+        }
+      }
+    }
+    if (Number(element.year) === now.getFullYear()) {
+      if (Number(element.month) === now.getMonth() + 1) {
+        if (Number(element.day) === now.getDate()) {
+          if (Number(element.hour) === now.getHours()) {
+            if (Number(element.minutes) > now.getMinutes()) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+  }
+
   reserveVisit(idVisit) {
     this.userSerive.reserveVisit(idVisit).subscribe(data => {
-      console.log(data);
+      this.snackBar.open('Wizyta została zarezerwowana!');
       this.loadVisits();
     });
   }

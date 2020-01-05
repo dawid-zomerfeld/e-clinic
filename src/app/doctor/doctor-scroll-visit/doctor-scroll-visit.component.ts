@@ -3,7 +3,6 @@ import {MatDialog, MatPaginator, MatSnackBar, MatTableDataSource} from '@angular
 import {ActivatedRoute} from '@angular/router';
 import * as moment from 'moment';
 import {DoctorService} from '../../shared-module/services/doctor.service';
-import {AdminEmployeeDoctorsDetailsComponent} from '../../admin/admin-employee/admin-employee-doctors/admin-employee-doctors-details/admin-employee-doctors-details.component';
 import {DoctorScrollVisitDetailsComponent} from './doctor-scroll-visit-details/doctor-scroll-visit-details.component';
 
 @Component({
@@ -45,9 +44,9 @@ export class DoctorScrollVisitComponent implements OnInit {
     const month = this.stringDate.slice(3, 5);
     const year = this.stringDate.slice(6, 10);
     this.doctorService.getAllVisitsByDate(day, month, year).subscribe(visits => {
-      this.dataSourceVisit = new MatTableDataSource(visits);
+      const newVisits = visits.filter( v => v.status === 'ZAREZERWOWANA' || v.status === 'OPŁACONA');
+      this.dataSourceVisit = new MatTableDataSource(newVisits);
       this.dataSourceVisit.paginator = this.paginator;
-      console.log(visits);
     });
   }
 
@@ -56,7 +55,7 @@ export class DoctorScrollVisitComponent implements OnInit {
     dialogRef.afterClosed().subscribe(visitForm => {
       this.doctorService.updateVisitDetails(element.id, visitForm.value).subscribe(result => {
         if (result.status === 202) {
-          this.snackBar.open('Zapisano!');
+          this.snackBar.open('Dodano przebieg wizyty!');
           this.loadVisits();
         } else {
           console.log('BAD');
@@ -69,12 +68,7 @@ export class DoctorScrollVisitComponent implements OnInit {
   doneVisit(idVisit) {
     this.doctorService.doneVisit(idVisit).subscribe(result => {
       this.loadVisits();
-      if (result.status === 202) {
-        this.snackBar.open('Zapisano!');
-      } else {
-        console.log('BAD');
-        this.snackBar.open('Wystąpił błąd!');
-      }
+      this.snackBar.open('Wizyta została zakończona!');
     });
   }
 

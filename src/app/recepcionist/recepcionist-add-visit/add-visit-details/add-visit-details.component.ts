@@ -5,7 +5,7 @@ import {Doctor} from '../../../shared-module/models/doctor.model';
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 import {AddVisitDialogComponent} from '../add-visit-dialog/add-visit-dialog.component';
 import * as moment from 'moment';
-import {VisitService} from '../../../shared-module/services/visit.service';
+
 
 @Component({
   selector: 'app-add-visit-details',
@@ -32,8 +32,7 @@ export class AddVisitDetailsComponent implements OnInit {
   constructor(private recepcionistService: RecepcionistService,
               private route: ActivatedRoute,
               private dialog: MatDialog,
-              private snackBar: MatSnackBar,
-              private visitService: VisitService) { }
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loadDoctor();
@@ -59,7 +58,7 @@ export class AddVisitDetailsComponent implements OnInit {
     const day = this.stringDate.slice(0, 2);
     const month = this.stringDate.slice(3, 5);
     const year = this.stringDate.slice(6, 10);
-    this.visitService.getVisits(id, day, month, year).subscribe(visits => {
+    this.recepcionistService.getVisits(id, day, month, year).subscribe(visits => {
       const newVisits = visits.filter( v => v.status === 'NOWA');
       this.dataSourceVisit = new MatTableDataSource(newVisits);
       this.dataSourceVisit.paginator = this.paginator;
@@ -68,7 +67,7 @@ export class AddVisitDetailsComponent implements OnInit {
 
   deleteVisit(idVisit) {
     const idDoctor = this.route.snapshot.params.key;
-    this.visitService.deleteVisits(idDoctor, idVisit).subscribe(data => {
+    this.recepcionistService.deleteVisits(idDoctor, idVisit).subscribe(data => {
       if (data.status === 202) {
         this.snackBar.open('Usunięto!');
       }
@@ -87,7 +86,7 @@ export class AddVisitDetailsComponent implements OnInit {
         }});
     dialogRef.afterClosed().subscribe(result => {
       const id = this.route.snapshot.params.key;
-      this.visitService.addVisits(id, result).subscribe(data => {
+      this.recepcionistService.addVisits(id, result).subscribe(data => {
         if (data.status === 400) {
           this.snackBar.open('Dana godzina jest zajęta!!');
         }

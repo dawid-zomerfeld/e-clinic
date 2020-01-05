@@ -17,3 +17,14 @@ table {
 }
 
 
+button {
+  &:hover {
+    outline:none;
+  }
+  &:focus {
+    outline:none;
+  }
+  &:active {
+    outline:none;
+  }
+}

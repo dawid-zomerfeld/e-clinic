@@ -107,4 +107,8 @@ export class UsersService {
   cancelVisit(id: number): Observable<any> {
     return this.http.post<any>(this.apiUrl + '/patient/visits/cancel'  + `/${id}` , {observe: 'response'});
   }
+
+  payVisit(id: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/patient/visits/pay'  + `/${id}` , {observe: 'response'});
+  }
 }
